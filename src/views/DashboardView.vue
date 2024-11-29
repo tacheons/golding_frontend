@@ -78,7 +78,7 @@ const fetchCompanyCompetence = async () => {
         <div class="dashboard" v-if="user">
           <h1>This is the Dashboard</h1>
           <button class="btn btn-secondary" @click="fetchCompanyCompetence">
-            get golding company competence
+            click here to get golding company competence via a protected route
           </button>
           <p>{{ competencies }}</p>
         </div>
