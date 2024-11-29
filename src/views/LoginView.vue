@@ -4,6 +4,9 @@ import { SystemConfig } from "../modules/configurations/systemConfig";
 import router from "../router";
 import Header from "../components/Header.vue";
 
+let display = ref(false);
+let message = ref("");
+let alertType = ref("");
 let email = ref("");
 let password = ref("");
 let user = ref(localStorage.getItem("user"));
@@ -64,6 +67,10 @@ async function login() {
   } else if (!response.ok) {
     isLoading = false;
     error = json.error;
+
+    message.value = json.error;
+    display.value = true;
+    alertType.value = "danger";
   }
 
   /**
@@ -80,7 +87,7 @@ async function login() {
 -->
 <template>
   <div class="row">
-    <Header />
+    <Header :display="display" :message="message" :type="alertType" />
 
     <div class="row">
       <div class="login" v-if="!user">

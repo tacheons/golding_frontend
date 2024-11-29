@@ -1,5 +1,18 @@
 <script setup>
+import { ref } from "vue";
 import Navbar from "../components/Navbar.vue";
+
+defineProps({
+  message: String,
+  display: Boolean,
+  type: String,
+});
+
+// if (display) {
+//   setTimeout(() => {
+//     display = false;
+//   }, 5000);
+// }
 </script>
 
 <!--
@@ -7,24 +20,37 @@ import Navbar from "../components/Navbar.vue";
 - menus on the header
 -->
 <template>
-  <div class="row headrow">
-    <div class="col-3">
-      <header>
-        <h1 class="logo">Golding Capital</h1>
-      </header>
+  <div>
+    <div class="row headrow">
+      <div class="col-3">
+        <header>
+          <h1 class="logo">Golding Capital</h1>
+        </header>
+      </div>
+      <div class="col-8 menu">
+        <header>
+          <Navbar />
+        </header>
+      </div>
     </div>
-    <div class="col-8 menu">
-      <header>
-        <Navbar />
-      </header>
+
+    <div class="row alert-row">
+      <div
+        v-if="display && type == 'success'"
+        class="alert alert-success z-3"
+        role="alert"
+      >
+        {{ message }}
+      </div>
+      <div
+        v-if="display && type == 'danger'"
+        class="alert alert-danger z-3"
+        role="alert"
+      >
+        {{ message }}
+      </div>
     </div>
   </div>
-  <!-- 
-    <div class="row alert-row">
-      <div class="alert alert-success z-3" role="alert">
-        A simple success alert—check it out!
-      </div>
-    </div> -->
 </template>
 
 <style>

@@ -74,12 +74,14 @@ const fetchCompanyCompetence = async () => {
     <Header />
 
     <div class="row">
-      <div class="dashboard" v-if="user">
-        <h1>This is the Dashbaord</h1>
-        <button class="btn btn-secondary" @click="fetchCompanyCompetence">
-          get golding company competence
-        </button>
-        <p>{{ competencies }}</p>
+      <div class="col-12">
+        <div class="dashboard" v-if="user">
+          <h1>This is the Dashboard</h1>
+          <button class="btn btn-secondary" @click="fetchCompanyCompetence">
+            get golding company competence
+          </button>
+          <p>{{ competencies }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -88,8 +90,11 @@ const fetchCompanyCompetence = async () => {
 <style>
 .dashboard {
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   /* border: ridge; */
+  background-image: url("../assets/gc.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .headrow {

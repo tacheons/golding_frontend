@@ -77,7 +77,7 @@ async function signup() {
 -->
 <template>
   <div class="row">
-    <Header />
+    <Header :display="display" :message="message" :type="alertType" />
 
     <div class="row">
       <div class="signup" v-if="!user">

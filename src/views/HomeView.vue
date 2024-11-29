@@ -12,7 +12,7 @@ import Header from "../components/Header.vue";
 
     <div class="row">
       <div class="home">
-        <h1>This is the Home page</h1>
+        <h1>This is the Home Page</h1>
       </div>
     </div>
   </div>
@@ -21,8 +21,11 @@ import Header from "../components/Header.vue";
 <style>
 .home {
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   /* border: ridge; */
+  background-image: url("../assets/gc.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .headrow {
