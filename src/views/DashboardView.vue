@@ -30,7 +30,7 @@ const fetchCompanyCompetence = async () => {
   isLoading = true;
 
   //parse stringified json data on local storage
-  user = JSON.parse(user.value);
+  let authObj = JSON.parse(user.value);
   /**
    * fetch company competence via a protected route,
    * using bearer token for authorization
@@ -39,7 +39,7 @@ const fetchCompanyCompetence = async () => {
     `${SystemConfig.serverUrl}:${SystemConfig.serverPort}/api/v1/gc/competencies`,
     {
       //integrate user token to the header for authorization
-      headers: { Authorization: `Bearer ${user.token}` },
+      headers: { Authorization: `Bearer ${authObj.token}` },
     }
   );
 
@@ -63,6 +63,56 @@ const fetchCompanyCompetence = async () => {
     error = json.error;
   }
 };
+
+/**
+ * @implementation
+ * the end point makes a request to the same server without the bearer
+ * tokens
+ *
+ * @params {*} void
+ * @returns
+ * void
+ *
+ * @authors
+ * @since
+ * v1.0.0
+ */
+const unprotectedEndPoint = async () => {
+  isLoading = true;
+
+  /**
+   * fetch company competence via a protected route,
+   * using bearer token for authorization
+   */
+  const response = await fetch(
+    `${SystemConfig.serverUrl}:${SystemConfig.serverPort}/api/v1/gc/competencies`,
+    {
+      //integrate user token to the header for authorization
+      // headers: { Authorization: `Bearer ${user.token}` },
+    }
+  );
+
+  // resolve json data
+  const json = await response.json();
+  console.log(json);
+
+  /**
+   * resolve request
+   */
+  if (response.ok) {
+    /**
+     * log competence and display the object on the dashboard
+     */
+    competencies.value = json;
+
+    // update loading state
+    isLoading = false;
+  } else if (!response.ok) {
+    isLoading = false;
+    // error = json.error;
+    competencies.value = json;
+  }
+};
 </script>
 
 <!--
@@ -77,9 +127,30 @@ const fetchCompanyCompetence = async () => {
       <div class="col-12">
         <div class="dashboard" v-if="user">
           <h1>This is the Dashboard</h1>
-          <button class="btn btn-secondary" @click="fetchCompanyCompetence">
-            click here to get golding company competence via a protected route
-          </button>
+
+          <div class="routes">
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="Basic outlined example"
+            >
+              <button
+                type="button"
+                @click="fetchCompanyCompetence"
+                class="btn btn-outline-secondary"
+              >
+                click here to get golding company competence via a protected
+              </button>
+              <button
+                type="button"
+                @click="unprotectedEndPoint"
+                class="btn btn-outline-secondary"
+              >
+                click here for the Unprotected Route
+              </button>
+            </div>
+          </div>
+
           <p>{{ competencies }}</p>
         </div>
       </div>
@@ -111,6 +182,10 @@ const fetchCompanyCompetence = async () => {
   align-items: center;
   justify-content: center;
   /* border: ridge 3px; */
+}
+
+.routes {
+  margin-top: 20px;
 }
 
 h1 {
