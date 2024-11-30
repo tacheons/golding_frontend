@@ -138,6 +138,7 @@ const unprotectedEndPoint = async () => {
                 type="button"
                 @click="fetchCompanyCompetence"
                 class="btn btn-outline-secondary"
+                title="route: http://localhost:4000/api/v1/gc/competencies"
               >
                 click here to get golding company competence via a protected
                 route
@@ -146,6 +147,7 @@ const unprotectedEndPoint = async () => {
                 type="button"
                 @click="unprotectedEndPoint"
                 class="btn btn-outline-secondary"
+                title="route: http://localhost:4000/api/v1/gc/competencies"
               >
                 click here for the same endpoint via unprotected Route
               </button>
