@@ -4,6 +4,9 @@ import router from "../router";
 import { SystemConfig } from "../modules/configurations/systemConfig";
 import Header from "../components/Header.vue";
 
+let display = ref(false);
+let message = ref("");
+let alertType = ref("");
 let firstname = ref("");
 let lastname = ref("");
 let email = ref("");
@@ -60,6 +63,11 @@ async function signup() {
     // update loading state
     isLoading = false;
 
+    //setup success alert
+    message.value = "user created successfully";
+    display.value = true;
+    alertType.value = "success";
+
     /**
      * route user to the login form
      */
@@ -67,6 +75,11 @@ async function signup() {
   } else {
     isLoading = false;
     error = json.error;
+
+    //setup error alert
+    message.value = json.error;
+    display.value = true;
+    alertType.value = "danger";
   }
 }
 </script>
