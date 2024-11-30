@@ -140,13 +140,14 @@ const unprotectedEndPoint = async () => {
                 class="btn btn-outline-secondary"
               >
                 click here to get golding company competence via a protected
+                route
               </button>
               <button
                 type="button"
                 @click="unprotectedEndPoint"
                 class="btn btn-outline-secondary"
               >
-                click here for the Unprotected Route
+                click here for the same endpoint via unprotected Route
               </button>
             </div>
           </div>
