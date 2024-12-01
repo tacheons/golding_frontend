@@ -8,11 +8,6 @@ defineProps({
   type: String,
 });
 
-// if (display) {
-//   setTimeout(() => {
-//     display = false;
-//   }, 5000);
-// }
 </script>
 
 <!--
