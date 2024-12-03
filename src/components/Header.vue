@@ -1,17 +1,21 @@
 <script setup>
-import { ref } from "vue";
+import { ref, toRefs } from "vue";
 import Navbar from "../components/Navbar.vue";
 
-defineProps({
+const props = defineProps({
   message: String,
   display: Boolean,
-  type: String,
+  alertType: String,
 });
 
-// if (display) {
+// let { display } = toRefs(props);
+
+// console.log("display = ", display.value);
+
+// if (display.value) {
 //   setTimeout(() => {
-//     display = false;
-//   }, 5000);
+//     display.value = false;Y
+//   }, 10000);
 // }
 </script>
 
@@ -36,14 +40,14 @@ defineProps({
 
     <div class="row alert-row">
       <div
-        v-if="display && type == 'success'"
+        v-if="display && alertType == 'success'"
         class="alert alert-success z-3"
         role="alert"
       >
         {{ message }}
       </div>
       <div
-        v-if="display && type == 'danger'"
+        v-if="display && alertType == 'danger'"
         class="alert alert-danger z-3"
         role="alert"
       >
