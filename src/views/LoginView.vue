@@ -87,7 +87,7 @@ async function login() {
 -->
 <template>
   <div class="row">
-    <Header :display="display" :message="message" :type="alertType" />
+    <Header :display="display" :message="message" :alertType="alertType" />
 
     <div class="row">
       <div class="login" v-if="!user">
