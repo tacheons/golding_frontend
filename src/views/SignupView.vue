@@ -71,7 +71,7 @@ async function signup() {
     /**
      * route user to the login form
      */
-    router.push({ name: "Login" });
+    // router.push({ name: "Login" });
   } else {
     isLoading = false;
     error = json.error;
@@ -90,7 +90,7 @@ async function signup() {
 -->
 <template>
   <div class="row">
-    <Header :display="display" :message="message" :type="alertType" />
+    <Header :display="display" :message="message" :alertType="alertType" />
 
     <div class="row">
       <div class="signup" v-if="!user">
